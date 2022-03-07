@@ -24,13 +24,11 @@ insta_password = ''
 
 
 def get_session():
-    session = InstaPy(username=insta_username,
+    return InstaPy(username=insta_username,
                       password=insta_password,
                       headless_browser=True,
                       nogui=True,
                       multi_logs=False)
-
-    return session
 
 
 def follow():
@@ -44,11 +42,7 @@ def follow():
 
     # let's go!
     with smart_run(session):
-        counter = 0
-
-        while counter < 5:
-            counter += 1
-
+        for _ in range(5):
             try:
                 # settings
                 session.set_relationship_bounds(enabled=True,

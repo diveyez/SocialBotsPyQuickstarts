@@ -1,5 +1,6 @@
 """ Quickstart script for LinkedinPy usage """
 
+
 # imports
 from linkedinpy import LinkedinPy
 from linkedinpy import smart_run
@@ -50,11 +51,13 @@ with smart_run(session):
             for location_code in location_codes_today:
                 #for school_code in school_codes_today:
                 session.search_and_connect(
-                        query=query,
-                        connection_relationship_code="%5B%22" + connection_relationship_code + "%22%5D",
-                        city_code="%5B%22" + country_code + "%" + location_code + "%22%5D"#,
-                        # school_code="%5B%22" + school_code + "%22%5D"
+                    query=query,
+                    connection_relationship_code="%5B%22"
+                    + connection_relationship_code
+                    + "%22%5D",
+                    city_code=f"%5B%22{country_code}%{location_code}%22%5D",
                 )
+
 
     print("Bong entrepreneurs(outside bengal) irrespective of college")
     queries = ["ghosh", "bagchi", "dutta", "datta", "mitra", "guha", "das", "basu", "bose", "saha", "majumder", "majumdar", "poddar", "sen", "sengupta", "de", "dey", "banerjee", "mukherjee", "mukhopadhyay", "chatterjee", "bhattacharya", "bhattacharjee", "roy", "roychowdhury", "chowdhury", "biswas", "basak"]
@@ -62,27 +65,31 @@ with smart_run(session):
         for connection_relationship_code in connection_relationship_codes:
             for location_code in location_codes_today:
                 session.search_and_connect(
-                    query=query + " founder",
-                    connection_relationship_code="%5B%22" + connection_relationship_code + "%22%5D",
-                    city_code="%5B%22" + country_code + "%" + location_code + "%22%5D"
+                    query=f'{query} founder',
+                    connection_relationship_code="%5B%22"
+                    + connection_relationship_code
+                    + "%22%5D",
+                    city_code=f"%5B%22{country_code}%{location_code}%22%5D",
                 )
+
 
 
     for location_code in location_codes_today:
         for school_code in school_codes_today:
             session.search_and_endorse(
                 query="founder",
-                city_code="%5B%22" + country_code + "%" + location_code + "%22%5D",
-                school_code="%5B%22" + school_code + "%22%5D"
+                city_code=f"%5B%22{country_code}%{location_code}%22%5D",
+                school_code=f"%5B%22{school_code}%22%5D",
             )
+
 
 
     print("Refresh DB")
     for query in queries:#Has bong's queries in it now
         for location_code in location_codes_today:
             session.search_1stconnects_and_savetodb(
-                query=query + " founder",
-                city_code="%5B%22" + country_code + "%" + location_code + "%22%5D"
+                query=f'{query} founder',
+                city_code=f"%5B%22{country_code}%{location_code}%22%5D",
             )
 
     #session.withdraw_old_invitations()
