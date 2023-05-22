@@ -24,4 +24,4 @@ SocialCommons == 0.1.dev0
 instapy == 0.1.3
 
 # quickstart_templates/instapy/follow_unfollow_and_send_telegram_msg.py: 17
-requests == 2.21.0
+requests == 2.31.0
